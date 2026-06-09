@@ -1,11 +1,11 @@
 import Home from "./components/Home"
-import Found from "./components/Found"
+import FoundForm from "./components/FoundForm"
 
 function App()
 {
     return(
         <>
-            <Found/>
+            <FoundForm/>
             <Home/>
         </>
     )
