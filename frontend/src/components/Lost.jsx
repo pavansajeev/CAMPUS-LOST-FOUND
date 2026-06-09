@@ -1,10 +1,12 @@
 import React, {useEffect, useState } from 'react'
 import axios from 'axios'
 import Product from './Product'
+import FoundForm from './FoundForm'
 
 const Lost = () => {
 
      const [data,setdata]=useState([])
+     const [showForm, setShowForm] = useState(false)
     const ProductsUrl="https://fakestoreapi.com/products"
     console.log(ProductsUrl)
     useEffect(()=>{
@@ -22,6 +24,12 @@ const Lost = () => {
     },[])
   return (
     <>
+         <div onClick={() => setShowForm(true)} className='flex justify-center mb-4'>
+             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">
+             Request for lost item
+         </button>
+        </div>
+        {showForm && <FoundForm />}
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {
             data.map((product)=>(

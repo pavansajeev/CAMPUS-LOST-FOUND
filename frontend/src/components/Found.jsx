@@ -4,7 +4,8 @@ import axios from 'axios'
 import  Item from './Item'
 import FoundForm from './FoundForm'
 
-const Found = () => {const [data,setdata]=useState([])
+const Found = () => {
+    const [data,setdata]=useState([])
     const [showForm, setShowForm] = useState(false)
     const ItemUrl="https://fakestoreapi.com/products"
     console.log(ItemUrl)
