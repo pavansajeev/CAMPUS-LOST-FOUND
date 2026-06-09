@@ -8,7 +8,7 @@ const FoundForm = () => {
        <label htmlFor="item-name">Item Name</label>
        <input id="item-name" type="text" placeholder='Item Name'  className="border border-gray-400 p-2 rounded" />
        <label htmlFor="location-found">Location Found</label>
-       <input id="location-found" type="text" placeholder='Location Found' />
+       <input id="location-found" type="text" placeholder='Location Found'  className="border border-gray-400 p-2 rounded" />
        <label htmlFor="description">Description</label>
        <textarea id="description"  placeholder='Description'  className="border border-gray-400 p-2 rounded"/>
        <label htmlFor="contact-info">Contact Information</label>

@@ -2,6 +2,7 @@ import Home from "./components/Home"
 import FoundForm from "./components/FoundForm"
 import Lost from "./components/Lost"
 import Product from "./components/Product"
+import Found from "./components/Found"
 import { BrowserRouter,Routes,Route,NavLink } from 'react-router-dom'
 
 function App()
@@ -21,6 +22,9 @@ function App()
                             <li>
                                 <NavLink to='/found'>Found</NavLink>
                             </li>
+                            <li>
+                                <NavLink to='/found-items'>Found Items</NavLink>
+                            </li>
                         </ul>
                     </div>
 
@@ -30,6 +34,7 @@ function App()
                     <Route path='/' element={<Home />} />
                     <Route path='/lost' element={<Lost />}/>
                     <Route path='/found' element={<FoundForm />}/>
+                    <Route path='/found-items' element={<Found />}/>
                     
                 </Routes>
             </BrowserRouter>
