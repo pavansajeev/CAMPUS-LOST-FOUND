@@ -1,5 +1,4 @@
 import Home from "./components/Home"
-import FoundForm from "./components/FoundForm"
 import Lost from "./components/Lost"
 import Product from "./components/Product"
 import Found from "./components/Found"
@@ -22,9 +21,7 @@ function App()
                             <li>
                                 <NavLink to='/found'>Found</NavLink>
                             </li>
-                            <li>
-                                <NavLink to='/found-items'>Found Items</NavLink>
-                            </li>
+                            
                         </ul>
                     </div>
 
@@ -33,8 +30,7 @@ function App()
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/lost' element={<Lost />}/>
-                    <Route path='/found' element={<FoundForm />}/>
-                    <Route path='/found-items' element={<Found />}/>
+                    <Route path='/found' element={<Found />}/>
                     
                 </Routes>
             </BrowserRouter>

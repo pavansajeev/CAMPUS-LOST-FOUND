@@ -13,7 +13,9 @@ const FoundForm = () => {
        <textarea id="description"  placeholder='Description'  className="border border-gray-400 p-2 rounded"/>
        <label htmlFor="contact-info">Contact Information</label>
        <input id="contact-info" type="text" placeholder='Contact Information'  className="border border-gray-400 p-2 rounded"/>
-       <button type='submit'>Submit</button>
+       <button type='submit' className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+         Submit
+       </button>
       </form>
     </div>
   )
