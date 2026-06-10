@@ -2,6 +2,7 @@ import Home from "./components/Home"
 import Lost from "./components/Lost"
 import Product from "./components/Product"
 import Found from "./components/Found"
+import Profile from "./components/Profile"
 import { BrowserRouter,Routes,Route,NavLink } from 'react-router-dom'
 
 function App()
@@ -21,7 +22,9 @@ function App()
                             <li>
                                 <NavLink to='/found'>Found</NavLink>
                             </li>
-                            
+                            <li>
+                                <NavLink to='/profile'>Profile</NavLink>
+                            </li>
                         </ul>
                     </div>
 
@@ -31,7 +34,7 @@ function App()
                     <Route path='/' element={<Home />} />
                     <Route path='/lost' element={<Lost />}/>
                     <Route path='/found' element={<Found />}/>
-                    
+                    <Route path='/profile' element={<Profile />}/>
                 </Routes>
             </BrowserRouter>
         </>
