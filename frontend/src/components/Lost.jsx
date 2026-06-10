@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import axios from 'axios'
 import Product from './Product'
-import FoundForm from './FoundForm'
+import LostForm from './LostForm'
 
 const Lost = () => {
 
@@ -29,7 +29,10 @@ const Lost = () => {
              Request for lost item
          </button>
         </div>
-        {showForm && <FoundForm />}
+        <div>
+            <h2 className='font-bold text-4xl p-3 underline'>Lost Items</h2>
+        </div>
+        {showForm && <LostForm />}
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {
             data.map((product)=>(

@@ -3,7 +3,7 @@ import React from 'react'
 const FoundForm = () => {
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded shadow">
-      <h1>Enter Found Item</h1>
+      <h1 className='text-center text-3xl'>Enter details of Found Item</h1>
       <form className="flex flex-col gap-4 mt-4">
        <label htmlFor="item-name">Item Name</label>
        <input id="item-name" type="text" placeholder='Item Name'  className="border border-gray-400 p-2 rounded" />

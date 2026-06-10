@@ -29,6 +29,9 @@ const Found = () => {
              Add found Item
          </button>
         </div>
+        <div>
+            <h2 className='font-bold text-4xl p-3 underline'>Found Items</h2>
+        </div>
         {showForm && <FoundForm />}
          <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
          {

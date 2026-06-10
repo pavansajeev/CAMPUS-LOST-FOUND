@@ -2,12 +2,12 @@ import React from 'react'
 
 const LostForm = () => {
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded shadow">
-      <h1>Enter details of lost item</h1>
+    <div className="max-w-md mx-auto p-8 m-8 bg-white rounded shadow-2xl">
+      <h1 className='text-center text-3xl'>Enter details of lost item</h1>
       <form className="flex flex-col gap-4 mt-4">
        <label htmlFor="item-name">Item Name</label>
        <input id="item-name" type="text" placeholder='Item Name'  className="border border-gray-400 p-2 rounded" />
-       <label htmlFor="location-found">Location Found</label>
+       <label htmlFor="location-found">Location Lost</label>
        <input id="location-found" type="text" placeholder='Location Found'  className="border border-gray-400 p-2 rounded" />
        <label htmlFor="description">Description</label>
        <textarea id="description"  placeholder='Description'  className="border border-gray-400 p-2 rounded"/>
