@@ -9,5 +9,6 @@ const ItemSchema=new mongoose.Schema({
     contactInfo:String,
 })
 
-const Item=mongoose.model('Items',ItemSchema)
+const Item=mongoose.model('items',ItemSchema)
 module.exports=Item
+

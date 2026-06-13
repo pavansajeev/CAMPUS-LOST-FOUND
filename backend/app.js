@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
-const Item = require('./models/ItemSchema')
+const Items = require('./models/ItemSchema')
 require('dotenv').config()
 
 const app = express()
@@ -22,4 +22,19 @@ main()
     console.error('Error connecting to MongoDB:', err)
 })
 
+app.post('/items',async(req,res)=>{
+    try {
+        const{name,description,location,date,imageurl,contactInfo}=req.body
+
+        const item=new Items({name,description,location,date,imageurl,contactInfo})
+        await item.save()
+        res.status(201).json({message:"Product added",data:item})
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({Error:error.message})
+    }
+})
+app.listen(PORT,()=>{
+    console.log("Server has started...")   
+})
 
