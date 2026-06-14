@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
-const Items = require('./models/ItemSchema')
+const Item = require('./models/ItemSchema')
 require('dotenv').config()
 
 const app = express()
@@ -26,12 +26,22 @@ app.post('/items',async(req,res)=>{
     try {
         const{name,description,location,date,imageurl,contactInfo}=req.body
 
-        const item=new Items({name,description,location,date,imageurl,contactInfo})
+        const item=new Item({name,description,location,date,imageurl,contactInfo})
         await item.save()
         res.status(201).json({message:"Product added",data:item})
     } catch (error) {
         console.error(error)
         res.status(500).json({Error:error.message})
+    }
+})
+
+app.get('/items',async(req,res)=>{
+    try {
+        const things=await Item.find()
+        res.status(200).json({message:"Product details recieved",data:things})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({error:error.message})
     }
 })
 app.listen(PORT,()=>{

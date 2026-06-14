@@ -5,7 +5,7 @@ const ItemSchema=new mongoose.Schema({
     description:String,
     location:String,
     date:Date,
-    imageUrl:String,
+    imageurl:String,
     contactInfo:String,
 })
 
