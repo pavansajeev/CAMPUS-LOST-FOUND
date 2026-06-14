@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 
 
-const Item = require('./models/ItemSchema')
+const lost = require('./models/lostSchema')
 const User = require('./models/userSchema')
 const Found = require('./models/foundSchema')
 
@@ -27,12 +27,15 @@ main()
     console.error('Error connecting to MongoDB:', err)
 })
 
-app.post('/items',async(req,res)=>{
+
+//lost item table
+
+app.post('/lost',async(req,res)=>{
     try {
         const{name,description,location,date,imageurl,contactInfo}=req.body
 
-        const item=new Item({name,description,location,date,imageurl,contactInfo})
-        await item.save()
+        const lost=new lost({name,description,location,date,imageurl,contactInfo})
+        await lost.save()
         res.status(201).json({message:"Product added",data:item})
     } catch (error) {
         console.error(error)
@@ -40,9 +43,9 @@ app.post('/items',async(req,res)=>{
     }
 })
 
-app.get('/items',async(req,res)=>{
+app.get('/lost',async(req,res)=>{
     try {
-        const things=await Item.find()
+        const things=await lost.find()
         res.status(200).json({message:"Product details recieved",data:things})
     } catch (error) {
         console.log(error)

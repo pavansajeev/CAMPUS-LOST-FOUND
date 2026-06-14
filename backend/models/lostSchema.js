@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-const ItemSchema=new mongoose.Schema({
+const lostSchema=new mongoose.Schema({
     name:String,
     description:String,
     location:String,
@@ -9,6 +9,6 @@ const ItemSchema=new mongoose.Schema({
     contactInfo:String,
 })
 
-const Item=mongoose.model('items',ItemSchema)
-module.exports=Item
+const lost=mongoose.model('lost',lostSchema)
+module.exports=lost
 
