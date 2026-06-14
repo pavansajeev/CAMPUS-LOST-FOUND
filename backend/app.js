@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 
 
-const lost = require('./models/lostSchema')
+const Lost = require('./models/lostSchema')
 const User = require('./models/userSchema')
 const Found = require('./models/foundSchema')
 
@@ -34,9 +34,9 @@ app.post('/lost',async(req,res)=>{
     try {
         const{name,description,location,date,imageurl,contactInfo}=req.body
 
-        const lost=new lost({name,description,location,date,imageurl,contactInfo})
+        const lost=new Lost({name,description,location,date,imageurl,contactInfo})
         await lost.save()
-        res.status(201).json({message:"Product added",data:item})
+        res.status(201).json({message:"Product added",data:lost})
     } catch (error) {
         console.error(error)
         res.status(500).json({Error:error.message})
