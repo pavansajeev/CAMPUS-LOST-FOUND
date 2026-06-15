@@ -11,7 +11,7 @@ export const Product = ({id,title,description,price,image}) => {
             <p>{price}</p>
             <Link to={`/products/${id}`}>
               <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                View Details
+                Report Found
               </button>
               </Link>
         </div>

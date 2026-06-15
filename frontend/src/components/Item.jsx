@@ -11,7 +11,7 @@ export const Item = ({id,name,description}) => {
            
             <Link to={`/item/${id}`}>
               <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                View Details
+                Request Claim
               </button>
               </Link>
         </div>
