@@ -53,6 +53,35 @@ app.get('/lost',async(req,res)=>{
     }
 })
 
+app.patch('/lost/:id',async(req,res)=>{
+    try {
+        const{id}=req.params
+        const{name,description,location,date,imageurl,contactInfo}=req.body
+        const lost=await Lost.findByIdAndUpdate(id,{name,description,location,date,imageurl,contactInfo},{new:true})
+        if(!lost){
+            return res.status(404).json({message:"Product not found"})
+        }
+        res.status(200).json({message:"Product updated",data:lost})
+    }
+        catch (error) {
+        console.error(error)
+        res.status(500).json({error:error.message})
+    }
+})
+
+app.delete('/lost/:id',async(req,res)=>{
+    try {
+        const{id}=req.params
+        const lost=await Lost.findByIdAndDelete(id)
+        if(!lost){
+            return res.status(404).json({message:"Product not found"})
+        }
+        res.status(200).json({message:"Product deleted",data:lost})
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({error:error.message})
+    }
+})
 //Found Item table
 
 app.post('/found',async(req,res)=>{
@@ -74,6 +103,36 @@ app.get('/found',async(req,res)=>{
         res.status(200).json({message:"Product details recieved",data:things})
     } catch (error) {
         console.log(error)
+        res.status(500).json({error:error.message})
+    }
+})
+
+app.patch('/found/:id',async(req,res)=>{
+    try{
+        const {id}=req.params
+        const{name,description,location,date,imageurl,contactInfo}=req.body
+        const found=await Found.findByIdAndUpdate(id,{name,description,location,date,imageurl,contactInfo},{new:true})
+        if(!found){
+            return res.status(404).json({message:"Product not found"})
+        }
+        res.status(200).json({message:"Product updated",data:found})
+    }
+    catch (error) {
+        console.error(error)
+        res.status(500).json({error:error.message})
+    }
+})
+
+app.delete('/found/:id',async(req,res)=>{
+    try {
+        const{id}=req.params
+        const found=await Found.findByIdAndDelete(id)
+        if(!found){
+            return res.status(404).json({message:"Product not found"})
+        }
+        res.status(200).json({message:"Product deleted",data:found})
+    } catch (error) {
+        console.error(error)
         res.status(500).json({error:error.message})
     }
 })
@@ -101,6 +160,7 @@ app.get('/users',async(req,res)=>{
         res.status(500).json({error:error.message})
     }
 })
+
 
 
 
