@@ -3,6 +3,8 @@ import Lost from "./components/Lost"
 import Product from "./components/Product"
 import Found from "./components/Found"
 import Profile from "./components/Profile"
+import SignIn from "./components/SignIn"
+import Login from "./components/Login"
 import { BrowserRouter,Routes,Route,NavLink } from 'react-router-dom'
 import axios from "axios"
 
@@ -12,7 +14,7 @@ function App()
     return(
         <>
             <BrowserRouter>
-                <nav className='bg-green-800 shadow-lg text-white flex'>
+                <nav className='bg-yellow-500 shadow-lg text-black flex-row '>
                     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                         <ul className='flex space-x-6 py-4'>
                             <li>
@@ -27,6 +29,9 @@ function App()
                             <li>
                                 <NavLink to='/profile'>Profile</NavLink>
                             </li>
+                            <li>
+                                <NavLink to='/signin'>Sign In</NavLink>
+                            </li>
                         </ul>
                     </div>
 
@@ -37,6 +42,8 @@ function App()
                     <Route path='/lost' element={<Lost />}/>
                     <Route path='/found' element={<Found />}/>
                     <Route path='/profile' element={<Profile />}/>
+                    <Route path='/signin' element={<SignIn />}/>
+                    <Route path='/Login' element={<Login />}/>
                 </Routes>
             </BrowserRouter>
         </>
