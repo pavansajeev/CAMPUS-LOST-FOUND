@@ -7,14 +7,14 @@ const Lost = () => {
 
      const [data,setdata]=useState([])
      const [showForm, setShowForm] = useState(false)
-    const ProductsUrl="https://fakestoreapi.com/products"
+    const ProductsUrl="http://localhost:3000/lost"
     console.log(ProductsUrl)
     useEffect(()=>{
         const fetchdata=async()=>{
             try {
                 const response=await axios.get(ProductsUrl)
-                console.log(response.data)
-                setdata(response.data)
+                console.log(response.data.data)
+                setdata(response.data.data)
             } catch (error) {
                 console.log(error)
             }

@@ -7,14 +7,14 @@ import FoundForm from './FoundForm'
 const Found = () => {
     const [data,setdata]=useState([])
     const [showForm, setShowForm] = useState(false)
-    const ItemUrl="https://fakestoreapi.com/products"
+    const ItemUrl="http://localhost:3000/found"
     console.log(ItemUrl)
     useEffect(()=>{
         const fetchdata=async()=>{
             try {
                 const response=await axios.get(ItemUrl)
-                console.log(response.data)
-                setdata(response.data)
+                console.log(response.data.data)
+                setdata(response.data.data)
             } catch (error) {
                 console.log(error)
             }

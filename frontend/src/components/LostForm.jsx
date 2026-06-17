@@ -59,6 +59,7 @@ const LostForm = () => {
       />
       <input 
         {...register("imageurl")}
+        type='file'
         placeholder='Image'
         className='w-full rounded-2xl border-green-500 p-4'
       />

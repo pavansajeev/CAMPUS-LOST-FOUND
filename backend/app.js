@@ -45,7 +45,7 @@ app.post('/lost',async(req,res)=>{
 
 app.get('/lost',async(req,res)=>{
     try {
-        const things=await lost.find()
+        const things=await Lost.find()
         res.status(200).json({message:"Product details recieved",data:things})
     } catch (error) {
         console.log(error)
