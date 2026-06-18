@@ -112,6 +112,25 @@ app.get('/found/:id',async(req,res)=>{
     }
 })
 
+app.get('/found', async(req,res)=>{
+    try {
+
+        const things = await Found.find()
+
+        res.status(200).json({
+            message:"Product details received",
+            data:things
+        })
+
+    } catch(error) {
+        console.log(error)
+
+        res.status(500).json({
+            error:error.message
+        })
+    }
+})
+
 app.patch('/found/:id',async(req,res)=>{
     try{
         const {id}=req.params
