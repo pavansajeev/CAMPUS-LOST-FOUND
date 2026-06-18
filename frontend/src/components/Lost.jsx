@@ -41,7 +41,8 @@ const Lost = () => {
                     id={product._id}
                     title={product.name}
                     description={product.description}
-                    price={product.price}
+                    location={product.location}
+                    date={product.date}
                     image={product.image}
                 />
             )
