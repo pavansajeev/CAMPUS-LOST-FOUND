@@ -98,10 +98,14 @@ app.post('/found',async(req,res)=>{
 
 })
 
-app.get('/found',async(req,res)=>{
+app.get('/found/:id',async(req,res)=>{
     try {
-        const things=await Found.find() 
-        res.status(200).json({message:"Product details recieved",data:things})
+        const {id}=req.params
+        const thing=await Found.findById(id)
+        if(!thing){
+            return res.status(404).json({message:"Product not found"})
+        }
+        res.status(200).json({message:"Product details recieved",data:thing})
     } catch (error) {
         console.log(error)
         res.status(500).json({error:error.message})
