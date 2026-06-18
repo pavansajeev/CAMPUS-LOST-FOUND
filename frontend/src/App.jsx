@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn"
 import Login from "./components/Login"
 import Adminlogin from "./components/Adminlogin"
 import Admindash from "./components/Admindash"
+import ClaimRequest from "./components/ClaimRequest"
 import { BrowserRouter,Routes,Route,NavLink } from 'react-router-dom'
 import axios from "axios"
 
@@ -54,6 +55,7 @@ function App()
                     <Route path='/Login' element={<Login />}/>
                     <Route path="/adminlogin" element={<Adminlogin />}/>
                     <Route path="/admindash" element={<Admindash />}/>
+                    <Route path="/claim/:id" element={<ClaimRequest />}/>   
                 </Routes>
             </BrowserRouter>
         </>
