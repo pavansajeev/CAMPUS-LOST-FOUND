@@ -5,6 +5,8 @@ import Found from "./components/Found"
 import Profile from "./components/Profile"
 import SignIn from "./components/SignIn"
 import Login from "./components/Login"
+import Adminlogin from "./components/Adminlogin"
+import Admindash from "./components/Admindash"
 import { BrowserRouter,Routes,Route,NavLink } from 'react-router-dom'
 import axios from "axios"
 
@@ -32,6 +34,12 @@ function App()
                             <li>
                                 <NavLink to='/signin'>Sign In</NavLink>
                             </li>
+                            <li>
+                                <NavLink to='/adminlogin'>Admin Login</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/admindash'>Admin Dashboard</NavLink>
+                            </li>
                         </ul>
                     </div>
 
@@ -44,6 +52,8 @@ function App()
                     <Route path='/profile' element={<Profile />}/>
                     <Route path='/signin' element={<SignIn />}/>
                     <Route path='/Login' element={<Login />}/>
+                    <Route path="/adminlogin" element={<Adminlogin />}/>
+                    <Route path="/admindash" element={<Admindash />}/>
                 </Routes>
             </BrowserRouter>
         </>

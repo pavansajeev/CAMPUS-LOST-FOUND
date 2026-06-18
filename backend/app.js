@@ -6,6 +6,7 @@ const cors = require('cors')
 const Lost = require('./models/lostSchema')
 const User = require('./models/userSchema')
 const Found = require('./models/foundSchema')
+const Admin=require('./models/adminSchema')
 
 require('dotenv').config()
 
@@ -161,7 +162,21 @@ app.get('/users',async(req,res)=>{
     }
 })
 
-
+// Admin table
+app.post('/adminlogin',async(req,res)=>{
+    const {username,password}=req.body
+    const admin=await Admin.findOne({
+        username,password
+    })
+    if(!admin){
+        return res.status(401).json({
+            message:"Invalid Credentials"
+        })
+    }
+    res.status(201).json({
+        message:"Login Successfull"
+    })
+})
 
 
 app.listen(PORT,()=>{
