@@ -39,6 +39,7 @@ const Found = () => {
                  <Item 
                      key={item.id}
                      title={item.name}
+                     location={item.location}
                      description={item.description}
                  />
              )

@@ -8,12 +8,16 @@ import Login from "./components/Login"
 import Adminlogin from "./components/Adminlogin"
 import Admindash from "./components/Admindash"
 import ClaimRequest from "./components/ClaimRequest"
-import { BrowserRouter,Routes,Route,NavLink } from 'react-router-dom'
+import {Routes,Route,NavLink, useLocation } from 'react-router-dom'
 import axios from "axios"
+import bgimg from "./assets/bg.jpeg"
 
 
 function App()
 {
+const location=useLocation()
+const ishomepage=location.pathname==='/';
+
     const user=JSON.parse(localStorage.getItem("user"))
     const handlelogout=()=>{
         localStorage.removeItem("user")
@@ -21,8 +25,17 @@ function App()
         window.location.reload()
     }
     return(
-        <>
-            <BrowserRouter>
+        <div style={
+            !ishomepage?{
+                backgroundImage:`linear-gradient( rgba(255,255,255,0.7),
+        rgba(255,255,255,0.7)),url(${bgimg})`,
+        backgroundSize:"cover",
+        backgroundPosition:"center",
+        minHeight: "100vh"
+                
+            }:{}
+        }>
+            
                 <nav className='bg-yellow-500 shadow-lg text-black flex-row '>
                     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                         <ul className='flex space-x-6 py-4'>
@@ -68,8 +81,8 @@ function App()
                     <Route path="/admindash" element={<Admindash />}/>
                     <Route path="/claim/:id" element={<ClaimRequest />}/>   
                 </Routes>
-            </BrowserRouter>
-        </>
+            
+        </div>
     )
 }
 
