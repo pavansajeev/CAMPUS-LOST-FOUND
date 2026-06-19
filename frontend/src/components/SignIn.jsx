@@ -55,7 +55,7 @@ const SignIn = () => {
               id="password" 
               placeholder="Password" 
               />
-            <button type="submit" className='rounded-2xl bg-green-300 p-4 m-4'>Sign Up</button>
+            <button type="submit" className='rounded-2xl bg-green-400 p-4 m-4 hover:bg-green-600 text-white'>Sign Up</button>
             <p>Already have an account? <a href="/Login" className='text-blue-500 hover:underline'>Log in</a></p>
         </form>
     </div>

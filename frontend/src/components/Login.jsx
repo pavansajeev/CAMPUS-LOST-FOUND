@@ -16,14 +16,19 @@ const Login = () => {
                 body:JSON.stringify(data)
 
             })
+            const result=await response.json()
             if(!response.ok)
             {
-                throw new Error("Failed to login")
+                alert(result.message);
+                return;
             }
+            localStorage.setItem("user",JSON.stringify(result.data));
+           
+
             alert("Login successfull");
             localStorage.setItem("isUser","true")
             reset();
-            navigate('/')
+            window.location.href='/'
         } catch (error) {
             console.log(error)
         }
@@ -34,21 +39,23 @@ const Login = () => {
 
         <form className=' bg-white flex flex-col gap-4 max-w-md mx-auto mt-10 p-6 rounded-lg shadow-md' onSubmit={handleSubmit(onsubmit)}>
             <h2 className='text-2xl font-bold text-center'>Login</h2>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Enter email:</label>
             <input
             {...register("email")} 
             type="email" 
             id="email" 
             placeholder="Email"
+            className="border rounded h-9"
             />
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Enter password:</label>
             <input 
             {...register("password")}
             type="password" 
             id="password" 
-            placeholder="Password" 
+            placeholder="Password"
+            className="border rounded h-9" 
             />
-            <button type="submit" className="rounded-2xl p-3 bg-green-500">Login</button>
+            <button type="submit" className="rounded-2xl p-3 bg-green-500 hover:bg-green-700 text-white">Login</button>
             <p>Dont have an account? <a href="/Signin" className='text-blue-500 hover:underline'>Create an account</a></p>
         </form>
        </div>

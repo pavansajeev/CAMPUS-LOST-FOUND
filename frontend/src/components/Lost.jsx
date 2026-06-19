@@ -24,8 +24,8 @@ const Lost = () => {
     },[])
   return (
     <>
-         <div onClick={() => setShowForm(true)} className='flex justify-center mb-4'>
-             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">
+         <div className='flex justify-center mb-4'>
+             <button onClick={() => setShowForm(true)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">
              Request for lost item
          </button>
         </div>

@@ -14,6 +14,12 @@ import axios from "axios"
 
 function App()
 {
+    const user=JSON.parse(localStorage.getItem("user"))
+    const handlelogout=()=>{
+        localStorage.removeItem("user")
+        alert("Logged out")
+        window.location.reload()
+    }
     return(
         <>
             <BrowserRouter>
@@ -30,10 +36,18 @@ function App()
                                 <NavLink to='/found'>Found</NavLink>
                             </li>
                             <li>
+                                {user&&(
                                 <NavLink to='/profile'>Profile</NavLink>
+                                )}
                             </li>
                             <li>
-                                <NavLink to='/login'>User Login</NavLink>
+                                {user?(
+                                    <button onClick={handlelogout}>
+                                        Logout
+                                    </button>
+                                ):(
+                                    <NavLink to='/login'>User login</NavLink>
+                                )}
                             </li>
                             <li>
                                 <NavLink to='/adminlogin'>Admin Login</NavLink>
