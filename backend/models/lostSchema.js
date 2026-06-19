@@ -5,7 +5,7 @@ const lostSchema=new mongoose.Schema({
     description:String,
     location:String,
     date:Date,
-    imageurl:String,
+    image:String,
     contactInfo:String,
 })
 

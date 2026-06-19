@@ -9,15 +9,20 @@ const LostForm = () => {
 
   const onsubmit=async(data)=>{
     try{
+
+      const formdata=new FormData()
+      formdata.append("name",data.name)
+      formdata.append("description",data.description)
+      formdata.append("location",data.location)
+      formdata.append("date",data.date)
+      formdata.append("image",data.image[0])
+
     console.log(data)
     const url="http://localhost:3000/lost"
     const method='POST';
     const response=await fetch(url,{
       method:method,
-      headers:{
-        "Content-Type":"application/json",
-      },
-      body:JSON.stringify(data),
+      body:formdata
     })
     if(!response.ok)
       throw new Error("Failed to add product")
@@ -58,7 +63,7 @@ const LostForm = () => {
         className='w-full rounded-2xl border-green-500 p-4'
       />
       <input 
-        {...register("imageurl")}
+        {...register("image")}
         type='file'
         placeholder='Image'
         className='w-full rounded-2xl border-green-500 p-4'

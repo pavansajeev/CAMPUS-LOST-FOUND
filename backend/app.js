@@ -7,12 +7,14 @@ const Lost = require('./models/lostSchema')
 const User = require('./models/userSchema')
 const Found = require('./models/foundSchema')
 const Admin=require('./models/adminSchema')
+const upload=require('./upload')
 
 require('dotenv').config()
 
 const app = express()
 app.use(cors())
 app.use(express.json()) 
+app.use("/uploads",express.static("uploads"));
 
 const PORT = process.env.PORT || 3000
 const dbUrl=process.env.MONGODB_URL
@@ -31,11 +33,13 @@ main()
 
 //lost item table
 
-app.post('/lost',async(req,res)=>{
+app.post('/lost',upload.single("image"),async(req,res)=>{
     try {
-        const{name,description,location,date,imageurl,contactInfo}=req.body
+        const{name,description,location,date,contactInfo}=req.body
 
-        const lost=new Lost({name,description,location,date,imageurl,contactInfo})
+        const lost=new Lost({name,description,location,date,contactInfo,
+            image:`/uploads/${req.file.filename}`
+        })
         await lost.save()
         res.status(201).json({message:"Product added",data:lost})
     } catch (error) {

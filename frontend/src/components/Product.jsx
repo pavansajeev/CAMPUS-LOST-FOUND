@@ -7,7 +7,7 @@ export const Product = ({id,title,description,location,date,image,isAdmin,onDele
 
   return (
     <div className='bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition'>
-        <img src={image} alt={title} className='=w-full h-40 object-cover'/>
+        <img src={`http://localhost:3000${image}`} alt={title} className='=w-full h-40 object-cover'/>
         <div className='p-4'>
             <h2 className='text-lg font-bold text-gray-800'>{title}</h2>
             <p>{description}</p>
