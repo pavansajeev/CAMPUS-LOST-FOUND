@@ -1,5 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
 const Home = () => {
+
+  useEffect(()=>{
+    const isUser=localStorage.getItem("isUser")
+    if(!isUser)
+    {
+      Navigate('/login')
+    }
+  })
+    
   return (
     <>  <div>
         <img src="/assets/bg-small.png" alt="Campus Lost and Found" className='w-full h-full object-cover' />

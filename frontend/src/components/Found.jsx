@@ -38,7 +38,7 @@ const Found = () => {
              data.map((item)=>(
                  <Item 
                      key={item.id}
-                     name={item.name}
+                     title={item.name}
                      description={item.description}
                  />
              )

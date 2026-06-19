@@ -165,14 +165,47 @@ app.delete('/found/:id',async(req,res)=>{
     }
 })
 
-//User table
+//User table-signup
 
-app.post('/users',async(req,res)=>{ 
+app.post('/signup',async(req,res)=>{ 
     try {
         const{username,email,password}=req.body
-        const user=new User({username,email,password})
+        const existinguser=await User.findOne({email:email.toLowerCase()});
+        if(existinguser)
+        {
+            return res.status(400).json({
+                message:"Email already registered"
+            });
+        }
+
+        const user=new User({username,email:email.toLowerCase(),password})
         await user.save()
         res.status(201).json({message:"User added",data:user})
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({error:error.message})
+    }
+})
+
+// login
+app.post('/login',async(req,res)=>{ 
+    try {
+        const{email,password}=req.body
+        const user=await User.findOne({email:email.toLowerCase()});
+        if(!user)
+        {
+            return res.status(404).json({
+                message:"User not found"
+            });
+        }
+        if(user.password!==password)
+        {
+            return res.status(401).json({
+                message:"Incorrect password"
+            });
+        }
+
+        res.status(200).json({message:"Login Successfull",data:user})
     } catch (error) {
         console.error(error)
         res.status(500).json({error:error.message})
