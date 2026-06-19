@@ -85,7 +85,7 @@ const Admindash = () => {
             <button className='border bg-amber-300 p-4 rounded-2xl'>Manage Users</button>
         </div>
         <div ref={lostref}>
-        <h2 className='text-4xl font-bold mb-7 mt-25'>Lost items</h2>
+        <h2 className='text-4xl font-bold mb-7 mt-25 ml-5'>Lost items</h2>
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {
                 lostitem.map((item)=>(
@@ -106,7 +106,7 @@ const Admindash = () => {
         </div>
         </div>
         <div ref={foundref}>
-        <h2 className='text-4xl font-bold mt-25 mb-7'>Found items</h2>
+        <h2 className='text-4xl font-bold mt-25 mb-7 ml-5'>Found items</h2>
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {
                 founditem.map((item)=>(

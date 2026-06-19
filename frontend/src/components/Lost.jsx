@@ -29,7 +29,7 @@ const Lost = () => {
              Request for lost item
          </button>
         </div>
-        <div>
+        <div className='m-5'>
             <h2 className='font-bold text-4xl p-3 underline'>Lost Items</h2>
         </div>
         {showForm && <LostForm />}

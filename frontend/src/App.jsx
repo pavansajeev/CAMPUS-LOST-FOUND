@@ -33,13 +33,10 @@ function App()
                                 <NavLink to='/profile'>Profile</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/signin'>Sign In</NavLink>
+                                <NavLink to='/login'>User Login</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/adminlogin'>Admin Login</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/admindash'>Admin Dashboard</NavLink>
                             </li>
                         </ul>
                     </div>

@@ -9,6 +9,7 @@ const Login = () => {
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" placeholder="Password" />
             <button type="submit">Login</button>
+            <p>Dont have an account? <a href="/Signin" className='text-blue-500 hover:underline'>Create an account</a></p>
         </form>
        </div>
     )

@@ -1,20 +1,22 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const Item = ({id,title,description,isAdmin,onDelete}) => {
+export const Item = ({id,title,description,location,isAdmin,date,onDelete}) => {
   const navigate=useNavigate()
   return (
-    <div className='bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition'>
+    <div className='bg-amber-50 shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition text-center ml-5'>
         <div className='p-4'>
             <h2 className='text-lg font-bold text-gray-800'>{title}</h2>
             
             <p>{description}</p>
+            <p>Location: {location}</p>
+            <p>Date: {date}</p>
            
-          
+            {!isAdmin &&(
               <button onClick={()=> navigate(`/claim/${id}`)} className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
                 Request Claim
               </button>
-              
+              )}
               {isAdmin &&(
                 <div className='text-center'>
                 <button className='border bg-red-600 text-white rounded-2xl p-3 m-3 hover:bg-red-500' onClick={()=>onDelete(id)}>
