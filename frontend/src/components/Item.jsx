@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const Item = ({id,title,description,location,isAdmin,date,onDelete}) => {
+export const Item = ({title,description,location,isAdmin,date,onDelete}) => {
   const navigate=useNavigate()
   const user=JSON.parse(localStorage.getItem("user"));
   return (

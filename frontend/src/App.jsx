@@ -17,6 +17,7 @@ function App()
 {
 const location=useLocation()
 const ishomepage=location.pathname==='/';
+const hidenavbar=location.pathname==='/Admindash'
 
     const user=JSON.parse(localStorage.getItem("user"))
     const handlelogout=()=>{
@@ -35,7 +36,7 @@ const ishomepage=location.pathname==='/';
                 
             }:{}
         }>
-            
+            {!hidenavbar&&(
                 <nav className='bg-yellow-500 shadow-lg text-black flex-row '>
                     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                         <ul className='flex space-x-6 py-4'>
@@ -69,6 +70,7 @@ const ishomepage=location.pathname==='/';
                     </div>
 
                 </nav>
+                )}
 
                 <Routes>
                     <Route path='/' element={<Home />} />
