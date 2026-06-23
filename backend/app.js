@@ -91,8 +91,8 @@ app.delete('/lost/:id',async(req,res)=>{
 
 app.post('/found',async(req,res)=>{
     try{
-        const{name,description,location,date,imageurl,contactInfo}=req.body
-        const found=new Found({name,description,location,date,imageurl,contactInfo})
+        const{name,description,location,date,imageurl,contactInfo,question,answer}=req.body
+        const found=new Found({name,description,location,date,imageurl,contactInfo,question,answer})
         await found.save()
         res.status(201).json({message:"Product added",data:found})
     } catch (error) {
@@ -138,8 +138,8 @@ app.get('/found', async(req,res)=>{
 app.patch('/found/:id',async(req,res)=>{
     try{
         const {id}=req.params
-        const{name,description,location,date,imageurl,contactInfo}=req.body
-        const found=await Found.findByIdAndUpdate(id,{name,description,location,date,imageurl,contactInfo},{new:true})
+        const{name,description,location,date,imageurl,contactInfo,question,answer}=req.body
+        const found=await Found.findByIdAndUpdate(id,{name,description,location,date,imageurl,contactInfo,question,answer},{new:true})
         if(!found){
             return res.status(404).json({message:"Product not found"})
         }

@@ -5,6 +5,8 @@ const foundSchema=new mongoose.Schema({
     description:String,
     location:String,
     date:Date,
+    question:String,
+    answer:String,
     imageurl:String,
     contactInfo:String,
 })
