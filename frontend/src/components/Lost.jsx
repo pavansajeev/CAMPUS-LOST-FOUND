@@ -2,9 +2,12 @@ import React, {useEffect, useState } from 'react'
 import axios from 'axios'
 import Product from './Product'
 import LostForm from './LostForm'
+import { useNavigate } from 'react-router-dom'
 
 const Lost = () => {
 
+    const navigate=useNavigate()
+    const user=JSON.parse(localStorage.getItem("user"))
      const [data,setdata]=useState([])
      const [showForm, setShowForm] = useState(false)
     const ProductsUrl="http://localhost:3000/lost"
@@ -25,9 +28,15 @@ const Lost = () => {
   return (
     <>
          <div className='flex justify-center mb-4'>
+            {user?(
              <button onClick={() => setShowForm(true)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">
              Request for lost item
          </button>
+         ):
+            <button onClick={() => navigate('/login')} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">
+             Login to request for lost item
+         </button>
+         }
         </div>
         <div className='m-5'>
             <h2 className='font-bold text-4xl p-3 underline'>Lost Items</h2>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const Product = ({title,description,location,date,image,isAdmin,onDelete}) => {
+export const Product = ({id,title,description,location,date,image,isAdmin,onDelete}) => {
 
   const user=JSON.parse(localStorage.getItem("user"))
   const navigate=useNavigate()

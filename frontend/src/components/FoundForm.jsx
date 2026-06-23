@@ -6,7 +6,8 @@ const FoundForm = () => {
     itemName: '',
     locationFound: '',
     description: '',
-    contactInfo: ''
+    contactInfo: '',
+    verifyquestion: ''
   })
 
   const handleChange = (e) => {
@@ -27,7 +28,8 @@ const FoundForm = () => {
                 name: formData.itemName,
                 description: formData.description,
                 location: formData.locationFound,
-                contactInfo: formData.contactInfo
+                contactInfo: formData.contactInfo,
+                verifyquestion:formData.verifyquestion
             }
         )
 
@@ -55,6 +57,9 @@ const FoundForm = () => {
        <label htmlFor="contactInfo">Contact Information</label>
        <input id="contactInfo" type="text" placeholder='Contact Information'  className="border border-gray-400 p-2 rounded"
         value={formData.contactInfo} onChange={handleChange} />
+        <label htmlFor="verifyquestion">Enter a verification question</label>
+       <input id="verifyquestion" type="text" placeholder='Verification question'  className="border border-gray-400 p-2 rounded"
+        value={formData.verifyquestion} onChange={handleChange} />
        <button type='submit' className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
          Submit
        </button>

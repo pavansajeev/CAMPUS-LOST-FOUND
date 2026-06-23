@@ -55,17 +55,24 @@ const hidenavbar=location.pathname==='/Admindash'
                                 )}
                             </li>
                             <li>
+                                {!user&&(
+                                <NavLink to='/adminlogin'>Admin Login</NavLink>
+                                )}
+                            </li>
+                            <li>
+                                <div className="flex justify-end">
                                 {user?(
                                     <button onClick={handlelogout}>
                                         Logout
                                     </button>
                                 ):(
-                                    <NavLink to='/login'>User login</NavLink>
+                                    <NavLink to='/login'>
+                                        <button className="bg-blue-500 rounded-2xl p-3 hover:bg-blue-400 text-white">User Login</button>
+                                    </NavLink>
                                 )}
+                                </div>
                             </li>
-                            <li>
-                                <NavLink to='/adminlogin'>Admin Login</NavLink>
-                            </li>
+                            
                         </ul>
                     </div>
 
