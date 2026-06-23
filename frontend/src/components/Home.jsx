@@ -1,14 +1,6 @@
 import React, { useEffect } from 'react'
 
 const Home = () => {
-
-  useEffect(()=>{
-    const isUser=localStorage.getItem("isUser")
-    if(!isUser)
-    {
-      Navigate('/login')
-    }
-  })
     
   return (
     <>  <div>
