@@ -38,7 +38,8 @@ app.post('/lost',upload.single("image"),async(req,res)=>{
         const{name,description,location,date,contactInfo}=req.body
 
         const lost=new Lost({name,description,location,date,contactInfo,
-            image:req.file?`/uploads/${req.file.filename}`:""
+            image:req.file?
+            `/uploads/${req.file.filename}`:""
         })
         await lost.save()
         res.status(201).json({message:"Product added",data:lost})
