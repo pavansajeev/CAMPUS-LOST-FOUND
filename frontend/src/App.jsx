@@ -8,6 +8,9 @@ import Login from "./components/Login"
 import Adminlogin from "./components/Adminlogin"
 import Admindash from "./components/Admindash"
 import ClaimRequest from "./components/ClaimRequest"
+import MyLost from './components/MyLost'
+import MyFound from './components/MyFound'
+
 import {Routes,Route,NavLink, useLocation } from 'react-router-dom'
 import axios from "axios"
 import bgimg from "./assets/bg.jpeg"
@@ -88,7 +91,9 @@ const hidenavbar=location.pathname==='/Admindash'
                     <Route path='/Login' element={<Login />}/>
                     <Route path="/adminlogin" element={<Adminlogin />}/>
                     <Route path="/admindash" element={<Admindash />}/>
-                    <Route path="/claim/:id" element={<ClaimRequest />}/>   
+                    <Route path="/claim/:id" element={<ClaimRequest />}/> 
+                    <Route path='/my-lost' element={<MyLost/>}/>
+                    <Route path='/my-found' element={<MyFound/>}/>  
                 </Routes>
             
         </div>
