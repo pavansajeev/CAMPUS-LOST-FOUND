@@ -8,6 +8,7 @@ const LostForm = () => {
   const navigate=useNavigate()
 
   const onsubmit=async(data)=>{
+    const user = JSON.parse(localStorage.getItem("user"))
     try{
 
       const formdata=new FormData()
@@ -16,6 +17,7 @@ const LostForm = () => {
       formdata.append("location",data.location)
       formdata.append("date",data.date)
       formdata.append("image",data.image[0])
+      formdata.append("userId",user._id)
 
     console.log(data)
     const url="http://localhost:3000/lost"

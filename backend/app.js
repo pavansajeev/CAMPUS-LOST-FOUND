@@ -35,9 +35,9 @@ main()
 
 app.post('/lost',upload.single("image"),async(req,res)=>{
     try {
-        const{name,description,location,date,contactInfo}=req.body
+        const{name,description,location,date,contactInfo,userId}=req.body
 
-        const lost=new Lost({name,description,location,date,contactInfo,
+        const lost=new Lost({name,description,location,date,contactInfo,userId,
             image:req.file?
             `/uploads/${req.file.filename}`:""
         })

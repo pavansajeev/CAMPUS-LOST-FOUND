@@ -16,7 +16,7 @@ fetchItems()
 const fetchItems=async()=>{
 
 const response=await axios.get("http://localhost:3000/found")
-
+console.log(response.data)
 const myItems=response.data.filter(
 
 item=>item.userId===user._id
