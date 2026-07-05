@@ -36,6 +36,13 @@ const Profile = () => {
           </button>
 
           <button
+            className='text-white bg-green-600 hover:bg-green-500 rounded-2xl p-3'
+            onClick={() => navigate('/my-claims')}
+          >
+            My Claim Requests
+          </button>
+
+          <button
             className='text-white bg-red-600 hover:bg-red-500 rounded-2xl p-3'
             onClick={() => {
               localStorage.removeItem("user");

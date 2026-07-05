@@ -12,7 +12,7 @@ const ClaimRequest = () => {
     const fetchItem=async()=>{
 
         try{
-
+          console.log(id);
             const response=await axios.get(
                 `http://localhost:3000/found/${id}`
             )
@@ -33,41 +33,41 @@ const ClaimRequest = () => {
     fetchItem()
 
 },[id])
-const handleSubmit=()=>{
+const handleSubmit=async()=>{
+  if(!item)
+  {
+    alert("Item not loaded")
+    return;
+  }
+  if(answer.trim()==="")
+  {
+    alert("Please enter your answer!")
+    return;
+  }
+  try {
+    const user=JSON.parse(localStorage.getItem("user"))
+    const response=await axios.post("http://localhost:3000/claimrequest",{
+      foundItemId:item._id,
+      claimantId:user._id,
+      answer:answer
 
-    if(!item){
-
-        alert("Item not loaded")
-
-        return
-
-    }
-
-    if(
-
-        answer.trim().toLowerCase()
-
-        ===
-
-        item.answer.trim().toLowerCase()
-
-    ){
-
-        alert("Claim Request Accepted")
-
-    }
-
-    else{
-
-        alert("Wrong Answer")
-
-    }
+    })
+    alert(response.data.message);
+    setAnswer("");
+  } catch (error) {
+      console.log(error)
+      alert(
+            error.response?.data?.message ||
+            "Failed to submit claim request."
+        );
+  }
+    
 
 }
   return (
     <div className='max-w-md mx-auto p-8 m-8 bg-white rounded shadow-2xl '>
         <h2 className='text-2xl font-bold mb-4'>Claim Verification</h2>
-        <p>{item ? item.question : "Loading..."}</p>
+        <p>{item ? item.verifyquestion : "Loading..."}</p>
        <input
 
 type="text"

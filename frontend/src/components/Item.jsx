@@ -1,7 +1,7 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,onDelete}) => {
+export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,onDelete,claimed}) => {
   const navigate=useNavigate()
   const user=JSON.parse(localStorage.getItem("user"));
   return (
@@ -15,15 +15,34 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
            
             {!isAdmin &&(
               <div>
-                {user?(
-              <button onClick={()=> navigate(`/claim/${id}`)} className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                Request Claim
-              </button>
-              ):(
-                <button onClick={()=> navigate('/login')} className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                Login to request claim
-              </button>
-              )}
+                {claimed ? (
+
+    <button
+        disabled
+        className="mt-4 w-full bg-gray-500 text-white py-2 rounded-lg cursor-not-allowed"
+    >
+        Claimed
+    </button>
+
+) : user ? (
+
+    <button
+        onClick={() => navigate(`/claim/${id}`)}
+        className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+    >
+        Request Claim
+    </button>
+
+) : (
+
+    <button
+        onClick={() => navigate('/login')}
+        className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+    >
+        Login to Request Claim
+    </button>
+
+)}
               </div>
               )}
               {isAdmin &&(

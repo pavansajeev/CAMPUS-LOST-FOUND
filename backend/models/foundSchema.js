@@ -5,11 +5,20 @@ const foundSchema=new mongoose.Schema({
     description:String,
     location:String,
     date:Date,
-    question:String,
-    answer:String,
-    imageurl:String,
+    verifyquestion:String,
     contactInfo:String,
+
+    userid:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
+    },
+
+    claimed:{
+        type:Boolean,
+        default:false
+    }
 })
+
 
 const Found=mongoose.model('found',foundSchema)
 module.exports=Found

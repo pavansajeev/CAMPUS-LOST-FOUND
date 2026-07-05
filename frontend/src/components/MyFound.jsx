@@ -1,76 +1,104 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const MyFound = () => {
 
-const [items,setItems]=useState([])
+    const [items, setItems] = useState([])
 
-const user=JSON.parse(localStorage.getItem("user"))
+    const user = JSON.parse(localStorage.getItem("user"))
 
-useEffect(()=>{
+    const navigate = useNavigate()
 
-fetchItems()
+    useEffect(() => {
 
-},[])
+        fetchItems()
 
-const fetchItems=async()=>{
+    }, [])
 
-const response=await axios.get("http://localhost:3000/found")
-console.log(response.data)
-const myItems=response.data.filter(
+    const fetchItems = async () => {
 
-item=>item.userId===user._id
+        try {
 
-)
+            const response = await axios.get("http://localhost:3000/found")
 
-setItems(myItems)
+            console.log(response.data.data)
 
-}
+            const myItems = response.data.data.filter(
+                item => item.userid === user._id
+            )
 
-return (
+            setItems(myItems)
 
-<div className='mt-10'>
+        } catch (error) {
 
-<h1 className='text-3xl text-center mb-6'>
-My Found Items
-</h1>
+            console.log(error)
 
-<div className='grid md:grid-cols-2 gap-5'>
+        }
 
-{
+    }
 
-items.map(item=>(
+    return (
 
-<div
-key={item._id}
-className='bg-white shadow-lg p-5 rounded-xl'
->
+        <div className='mt-10'>
 
-<h2 className='text-xl font-bold'>
-{item.title}
-</h2>
+            <h1 className='text-3xl text-center mb-6'>
+                My Found Items
+            </h1>
 
-<p>{item.description}</p>
+            <div className='grid md:grid-cols-2 gap-5'>
 
-<p>
-Location : {item.location}
-</p>
+                {
+                    items.length === 0 ? (
 
-<p>
-Date : {item.date}
-</p>
+                        <p className='text-center col-span-2'>
+                            No Found Items
+                        </p>
 
-</div>
+                    ) : (
 
-))
+                        items.map(item => (
 
-}
+                            <div
+                                key={item._id}
+                                className='bg-white shadow-lg p-5 rounded-xl'
+                            >
 
-</div>
+                                <h2 className='text-xl font-bold'>
+                                    {item.name}
+                                </h2>
 
-</div>
+                                <p className='mt-2'>
+                                    {item.description}
+                                </p>
 
-)
+                                <p className='mt-2'>
+                                    <b>Location :</b> {item.location}
+                                </p>
+
+                                <p>
+                                    <b>Date :</b> {item.date}
+                                </p>
+
+                                <button
+                                    onClick={() => navigate(`/claims/${item._id}`)}
+                                    className='mt-4 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded'
+                                >
+                                    View Claims
+                                </button>
+
+                            </div>
+
+                        ))
+
+                    )
+                }
+
+            </div>
+
+        </div>
+
+    )
 
 }
 

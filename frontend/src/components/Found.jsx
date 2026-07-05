@@ -46,10 +46,14 @@ const Found = () => {
          {
              data.map((item)=>(
                  <Item 
-                     key={item.id}
+                     key={item._id}
+                     id={item._id}
                      title={item.name}
                      location={item.location}
+                     date={item.date}
+                     verifyquestion={item.verifyquestion}
                      description={item.description}
+                     claimed={item.claimed}
                  />
              )
              

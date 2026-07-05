@@ -7,7 +7,10 @@ const lostSchema=new mongoose.Schema({
     date:Date,
     image:String,
     contactInfo:String,
-    userId:String
+    userid:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"user"
+           },
 })
 
 const lost=mongoose.model('lost',lostSchema)

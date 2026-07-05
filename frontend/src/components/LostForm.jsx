@@ -17,7 +17,7 @@ const LostForm = () => {
       formdata.append("location",data.location)
       formdata.append("date",data.date)
       formdata.append("image",data.image[0])
-      formdata.append("userId",user._id)
+      formdata.append("userid",user._id)
 
     console.log(data)
     const url="http://localhost:3000/lost"
@@ -31,7 +31,7 @@ const LostForm = () => {
 
     alert("Product Added");
     reset();
-    navigate('/lost');
+    window.location.href='/lost'
     }
     catch(error){
       console.log(error)
@@ -62,6 +62,11 @@ const LostForm = () => {
         {...register("date")}
         type='Date'
         placeholder='Date'
+        className='w-full rounded-2xl border-green-500 p-4'
+      />
+      <input 
+        {...register("contactInfo")}
+        placeholder='Contact Information'
         className='w-full rounded-2xl border-green-500 p-4'
       />
       <input 

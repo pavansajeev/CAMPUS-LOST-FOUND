@@ -10,10 +10,17 @@ import Admindash from "./components/Admindash"
 import ClaimRequest from "./components/ClaimRequest"
 import MyLost from './components/MyLost'
 import MyFound from './components/MyFound'
+import MyClaims from "./components/Myclaims"
+import ViewClaims from "./components/Viewclaims"
+import ReportFound from "./components/ReportFound"
+import IncomingReports from "./components/IncomingReports";
+import LostReports from "./components/LostReports"
+import Footer from "./components/Footer";
 
 import {Routes,Route,NavLink, useLocation } from 'react-router-dom'
 import axios from "axios"
 import bgimg from "./assets/bg.jpeg"
+import logo from "./assets/logo.png";
 
 
 function App()
@@ -26,10 +33,11 @@ const hidenavbar=location.pathname==='/Admindash'
     const handlelogout=()=>{
         localStorage.removeItem("user")
         alert("Logged out")
-        window.location.reload()
+        window.location.href='/'
     }
     return(
-        <div style={
+        <div className="min-h-screen flex flex-col" 
+            style={
             !ishomepage?{
                 backgroundImage:`linear-gradient( rgba(255,255,255,0.7),
         rgba(255,255,255,0.7)),url(${bgimg})`,
@@ -40,32 +48,32 @@ const hidenavbar=location.pathname==='/Admindash'
             }:{}
         }>
             {!hidenavbar&&(
-                <nav className='bg-yellow-500 shadow-lg text-black flex-row '>
+                <nav className='bg-yellow-500 shadow-lg text-black flex-row  '>
                     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                         <ul className='flex space-x-6 py-4'>
-                            <li>
+                            <li className="w-25 h-15">
+
+                                <img src={logo} alt="LOGO" />
+                            </li>
+
+                            <li className="font-bold pt-4">
                                 <NavLink to='/'>Home</NavLink>
                             </li>
-                            <li>
+                            <li className="font-bold pt-4">
                                 <NavLink to='/lost'>Lost</NavLink>
                             </li>
-                            <li>
+                            <li className="font-bold pt-4">
                                 <NavLink to='/found'>Found</NavLink>
                             </li>
-                            <li>
+                            <li className="font-bold pt-4">
                                 {user&&(
                                 <NavLink to='/profile'>Profile</NavLink>
                                 )}
                             </li>
                             <li>
-                                {!user&&(
-                                <NavLink to='/adminlogin'>Admin Login</NavLink>
-                                )}
-                            </li>
-                            <li>
                                 <div className="flex justify-end">
                                 {user?(
-                                    <button onClick={handlelogout}>
+                                    <button className="bg-red-600 rounded-2xl p-3 hover:bg-red-500 text-white" onClick={handlelogout}>
                                         Logout
                                     </button>
                                 ):(
@@ -76,12 +84,14 @@ const hidenavbar=location.pathname==='/Admindash'
                                 </div>
                             </li>
                             
+                            
                         </ul>
                     </div>
 
                 </nav>
                 )}
 
+            <main className="flex-1">
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/lost' element={<Lost />}/>
@@ -94,8 +104,20 @@ const hidenavbar=location.pathname==='/Admindash'
                     <Route path="/claim/:id" element={<ClaimRequest />}/> 
                     <Route path='/my-lost' element={<MyLost/>}/>
                     <Route path='/my-found' element={<MyFound/>}/>  
+                    <Route path='/my-claims' element={<MyClaims/>}/>
+                    <Route path="/claims/:id" element={<ViewClaims />} />
+                    <Route path="/report-found/:id" element={<ReportFound />} />
+                    <Route
+                        path="/incomingreports"
+                        element={<IncomingReports />}
+                    />
+                    <Route
+                        path="/lostreports/:id"
+                        element={<LostReports />}
+                    />
                 </Routes>
-            
+            </main>
+                {!hidenavbar && <Footer />}
         </div>
     )
 }
