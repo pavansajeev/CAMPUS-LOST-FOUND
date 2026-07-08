@@ -19,11 +19,11 @@ export const Product = ({id,title,description,location,date,image,isAdmin,onDele
             {!isAdmin &&(
               <div>
                 {user?(
-              <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 mt-5" onClick={() => navigate(`/report-found/${id}`)}>
+              <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-5" onClick={() => navigate(`/report-found/${id}`)}>
                 Report Found
               </button>
               ):(
-                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 mt-5" onClick={()=>navigate('/login')}>
+                <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-5" onClick={()=>navigate('/login')}>
                 Login to report found
               </button>
               )}

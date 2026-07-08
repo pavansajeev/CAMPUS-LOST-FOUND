@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="bg-yellow-500 text-center py-6 mt-10">
+        <footer className="bg-[#fdf3c0] text-center py-6 border-t border-gray-300 mt-auto">
 
             <p className="text-gray-800">
                 © {new Date().getFullYear()} Campus Lost & Found

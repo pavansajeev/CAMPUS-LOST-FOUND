@@ -19,14 +19,14 @@ const Home = () => {
 
                 <button
                     onClick={() => navigate("/found")}
-                    className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition"
+                    className="bg-orange-500 hover:bg-orange-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition"
                 >
                     Lost Anything? Search here
                 </button>
 
                 <button
                     onClick={() => navigate("/lost")}
-                    className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition"
+                    className="bg-teal-600 hover:bg-teal-900 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition"
                 >
                     Found Anything? Search here
                 </button>

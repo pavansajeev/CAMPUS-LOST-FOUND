@@ -48,9 +48,9 @@ const hidenavbar=location.pathname==='/Admindash'
             }:{}
         }>
             {!hidenavbar&&(
-                <nav className='bg-yellow-500 shadow-lg text-black flex-row  '>
+                <nav className='bg-[#F59E0B] shadow-lg text-black flex-row '>
                     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                        <ul className='flex space-x-6 py-4'>
+                        <ul className='flex gap-10 space-x-6 py-4 '>
                             <li className="w-25 h-15">
 
                                 <img src={logo} alt="LOGO" />

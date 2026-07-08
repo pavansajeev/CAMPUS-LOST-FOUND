@@ -37,7 +37,7 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
 
     <button
         onClick={() => navigate('/login')}
-        className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+        className="mt-4 w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600"
     >
         Login to Request Claim
     </button>
