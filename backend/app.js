@@ -316,6 +316,11 @@ app.post('/claimrequest',async(req,res)=>{
     try {
         const {foundItemId,claimantId,answer}=req.body;
         const founditem=await Found.findById(foundItemId)
+        if(founditem.userid.toString()===claimantId){
+            return res.status(400).json({
+                message:"You cannot claim the item you found"
+            });
+        }
         if(!founditem){
             return res.status(404).json({
         message:"Found item not found"
@@ -516,8 +521,12 @@ app.post("/foundreport", async (req, res) => {
             contactInfo
         } = req.body;
 
-        // Check if lost item exists
         const lostItem = await Lost.findById(lostItemId);
+        if(lostItem.userid.toString()===senderId){
+            return res.status(400).json({
+                message:"You cannot report your own lost item"
+            });
+        }
 
         if (!lostItem) {
             return res.status(404).json({
@@ -525,7 +534,7 @@ app.post("/foundreport", async (req, res) => {
             });
         }
 
-        // Prevent duplicate reports
+        
         const existingReport = await FoundReport.findOne({
             lostItemId,
             senderId
