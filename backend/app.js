@@ -550,7 +550,7 @@ app.post("/foundreport", async (req, res) => {
 
             lostItemId,
             senderId,
-            receiverId: lostItem.userid,   // Use userId if that's what your schema has
+            receiverId: lostItem.userid,   
 
             name,
             description,
