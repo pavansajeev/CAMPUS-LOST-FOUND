@@ -10,6 +10,7 @@ const Lost = () => {
     const user=JSON.parse(localStorage.getItem("user"))
      const [data,setdata]=useState([])
      const [showForm, setShowForm] = useState(false)
+     const [search, setSearch] = useState("");
     const ProductsUrl="http://localhost:3000/lost"
     console.log(ProductsUrl)
     useEffect(()=>{
@@ -25,6 +26,11 @@ const Lost = () => {
         
         fetchdata()
     },[])
+    const filteredData = data.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase()) ||
+    product.description.toLowerCase().includes(search.toLowerCase()) ||
+    product.location.toLowerCase().includes(search.toLowerCase())
+    );
   return (
     <>
          <div className='flex justify-center mb-4'>
@@ -41,10 +47,19 @@ const Lost = () => {
         <div className='m-5'>
             <h2 className='font-bold text-4xl p-3 underline'>Lost Items</h2>
         </div>
+        <div className="flex justify-center my-6">
+        <input
+            type="text"
+            placeholder=" Search by item name, description or location..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full max-w-xl px-5 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+        </div>
         {showForm && <LostForm />}
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {
-            data.map((product)=>(
+            filteredData.map((product)=>(
                 <Product 
                     key={product._id}
                     id={product._id}
@@ -53,6 +68,7 @@ const Lost = () => {
                     location={product.location}
                     date={product.date}
                     image={product.image}
+                    userid={product.userid}
                 />
             )
 

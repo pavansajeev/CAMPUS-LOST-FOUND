@@ -11,6 +11,11 @@ const Admindash = () => {
     const [lostitem,setlostitem]=useState([])
     const [founditem,setfounditem]=useState([])
     const [user,setuser]=useState([])
+
+    const [lostSearch, setLostSearch] = useState("");
+    const [foundSearch, setFoundSearch] = useState("");
+    const [userSearch, setUserSearch] = useState("");
+
     const userref=useRef(null)
     const lostref=useRef(null)
     const foundref=useRef(null)
@@ -93,6 +98,23 @@ const Admindash = () => {
             behavior:'smooth'
         })
     }
+
+    const filteredlostitem = lostitem.filter((item) =>
+    item.name.toLowerCase().includes(lostSearch.toLowerCase()) ||
+    item.description.toLowerCase().includes(lostSearch.toLowerCase()) ||
+    item.location.toLowerCase().includes(lostSearch.toLowerCase())
+    );
+
+    const filteredfounditem = founditem.filter((item) =>
+    item.name.toLowerCase().includes(foundSearch.toLowerCase()) ||
+    item.description.toLowerCase().includes(foundSearch.toLowerCase()) ||
+    item.location.toLowerCase().includes(foundSearch.toLowerCase())
+    );
+
+    const filtereduser = user.filter((item) =>
+    item.username.toLowerCase().includes(userSearch.toLowerCase()) ||
+    item.email.toLowerCase().includes(userSearch.toLowerCase())
+    );
   return (
     <>
         <div className='flex justify-end p-4'>
@@ -108,9 +130,18 @@ const Admindash = () => {
         </div>
         <div ref={lostref}>
         <h2 className='text-4xl font-bold mb-7 mt-25 ml-5'>Lost items</h2>
+        <div className="flex justify-center my-6">
+        <input
+            type="text"
+            placeholder=" Search by item name, description or location..."
+            value={lostSearch}
+            onChange={(e) => setLostSearch(e.target.value)}
+            className="w-full max-w-xl px-5 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+        </div>
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {
-                lostitem.map((item)=>(
+                filteredlostitem.map((item)=>(
                     <Product 
                         key={item._id}
                         id={item._id}
@@ -129,9 +160,18 @@ const Admindash = () => {
         </div>
         <div ref={foundref}>
         <h2 className='text-4xl font-bold mt-25 mb-7 ml-5'>Found items</h2>
+        <div className="flex justify-center my-6">
+        <input
+            type="text"
+            placeholder=" Search by item name, description or location..."
+            value={foundSearch}
+            onChange={(e) => setFoundSearch(e.target.value)}
+            className="w-full max-w-xl px-5 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+        </div>
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {
-                founditem.map((item)=>(
+                filteredfounditem.map((item)=>(
                     <Item 
                         key={item._id}
                         id={item._id}
@@ -149,9 +189,18 @@ const Admindash = () => {
         </div>
         <div ref={userref}>
             <h2 className='text-4xl font-bold mt-25 mb-7 ml-5'>Users</h2>
+            <div className="flex justify-center my-6">
+        <input
+            type="text"
+            placeholder=" Search by username or email"
+            value={userSearch}
+            onChange={(e) => setUserSearch(e.target.value)}
+            className="w-full max-w-xl px-5 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+        </div>
         <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-7'>
             {
-                user.map((human)=>(
+                filtereduser.map((human)=>(
                     <User 
                         key={human._id}
                         id={human._id}

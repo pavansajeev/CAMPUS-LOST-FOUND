@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,onDelete,claimed}) => {
+export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,onDelete,claimed,userid}) => {
   const navigate=useNavigate()
   const user=JSON.parse(localStorage.getItem("user"));
   return (
@@ -11,7 +11,14 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
             
             <p>{description}</p>
             <p>Location: {location}</p>
-            <p>Date: {date}</p>
+            <p>
+              Date:{" "}
+              {new Date(date).toLocaleString("en-IN", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
            
             {!isAdmin &&(
               <div>
@@ -25,14 +32,14 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
     </button>
 
 ) : user ? (
-
+    String(user._id) !== String(userid) && (
     <button
         onClick={() => navigate(`/claim/${id}`)}
         className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
     >
         Request Claim
     </button>
-
+    )
 ) : (
 
     <button

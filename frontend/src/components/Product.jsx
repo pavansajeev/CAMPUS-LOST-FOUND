@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const Product = ({id,title,description,location,date,image,isAdmin,onDelete}) => {
+export const Product = ({id,title,description,location,date,image,isAdmin,onDelete,userid}) => {
 
   const user=JSON.parse(localStorage.getItem("user"))
   const navigate=useNavigate()
@@ -15,13 +15,25 @@ export const Product = ({id,title,description,location,date,image,isAdmin,onDele
             <h2 className='text-lg font-bold text-gray-800'>{title}</h2>
             <p>{description}</p>
             <p>Location: {location}</p>
-            <p>Date: {date}</p>
+            <p>
+              Date:{" "}
+              {new Date(date).toLocaleString("en-IN", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
             {!isAdmin &&(
               <div>
                 {user?(
-              <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-5" onClick={() => navigate(`/report-found/${id}`)}>
+              String(user._id) !== String(userid) && (
+              <button
+                className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-5"
+                onClick={() => navigate(`/report-found/${id}`)}
+              >
                 Report Found
               </button>
+            )
               ):(
                 <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-5" onClick={()=>navigate('/login')}>
                 Login to report found

@@ -17,7 +17,16 @@ import IncomingReports from "./components/IncomingReports";
 import LostReports from "./components/LostReports"
 import Footer from "./components/Footer";
 
-import {Routes,Route,NavLink, useLocation } from 'react-router-dom'
+import {
+  Routes,
+  Route,
+  NavLink,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+
+import { CircleUserRound, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios"
 import bgimg from "./assets/bg.jpeg"
 import logo from "./assets/logo.png";
@@ -25,6 +34,26 @@ import logo from "./assets/logo.png";
 
 function App()
 {
+
+    const navigate = useNavigate();
+
+const [open, setOpen] = useState(false);
+
+const menuRef = useRef(null);
+
+useEffect(() => {
+  function handleClickOutside(event) {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+  }
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () =>
+    document.removeEventListener("mousedown", handleClickOutside);
+}, []);
+
 const location=useLocation()
 const ishomepage=location.pathname==='/';
 const hidenavbar=location.pathname==='/Admindash'
@@ -48,47 +77,104 @@ const hidenavbar=location.pathname==='/Admindash'
             }:{}
         }>
             {!hidenavbar&&(
-                <nav className='bg-[#F59E0B] shadow-lg text-black flex-row '>
-                    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                        <ul className='flex gap-10 space-x-6 py-4 '>
-                            <li className="w-25 h-15">
+                <nav className="bg-[#0F172A] shadow-lg text-white">
+  <div className="max-w-7xl mx-auto px-6">
 
-                                <img src={logo} alt="LOGO" />
-                            </li>
+    <div className="flex items-center h-20">
 
-                            <li className="font-bold pt-4">
-                                <NavLink to='/'>Home</NavLink>
-                            </li>
-                            <li className="font-bold pt-4">
-                                <NavLink to='/lost'>Lost</NavLink>
-                            </li>
-                            <li className="font-bold pt-4">
-                                <NavLink to='/found'>Found</NavLink>
-                            </li>
-                            <li className="font-bold pt-4">
-                                {user&&(
-                                <NavLink to='/profile'>Profile</NavLink>
-                                )}
-                            </li>
-                            <li>
-                                <div className="flex justify-end">
-                                {user?(
-                                    <button className="bg-red-600 rounded-2xl p-3 hover:bg-red-500 text-white" onClick={handlelogout}>
-                                        Logout
-                                    </button>
-                                ):(
-                                    <NavLink to='/login'>
-                                        <button className="bg-blue-500 rounded-2xl p-3 hover:bg-blue-400 text-white">User Login</button>
-                                    </NavLink>
-                                )}
-                                </div>
-                            </li>
-                            
-                            
-                        </ul>
-                    </div>
+      {/* Logo */}
 
-                </nav>
+      <img
+        src={logo}
+        alt="logo"
+        className="w-16 h-16 object-contain"
+      />
+
+      {/* Navigation */}
+
+      <div className="flex gap-14 ml-16 font-bold">
+
+        <NavLink to="/">Home</NavLink>
+
+        <NavLink to="/lost">Lost</NavLink>
+
+        <NavLink to="/found">Found</NavLink>
+
+      </div>
+
+      {/* Right Side */}
+
+      <div className="ml-auto">
+
+        {!user ? (
+
+          <NavLink to="/login">
+
+            <button className="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-xl">
+              User Login
+            </button>
+
+          </NavLink>
+
+        ) : (
+
+          <div className="relative" ref={menuRef}>
+
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-2"
+            >
+              <CircleUserRound
+                size={36}
+                className="hover:text-blue-300"
+              />
+
+              <ChevronDown
+                size={18}
+                className={`transition ${
+                  open ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {open && (
+
+              <div className="absolute right-0 mt-3 w-48 rounded-xl bg-white shadow-xl text-black overflow-hidden z-50">
+
+                <button
+                  onClick={() => {
+                    navigate("/profile");
+                    setOpen(false);
+                  }}
+                  className="block w-full text-left px-5 py-3 hover:bg-gray-100"
+                >
+                  👤 Profile
+                </button>
+
+                <button
+                  onClick={() => {
+                    handlelogout();
+                    setOpen(false);
+                  }}
+                  className="block w-full text-left px-5 py-3 text-red-600 hover:bg-red-50"
+                >
+                  🚪 Logout
+                </button>
+
+              </div>
+
+            )}
+
+          </div>
+
+        )}
+
+      </div>
+
+    </div>
+
+  </div>
+</nav>
                 )}
 
             <main className="flex-1">
