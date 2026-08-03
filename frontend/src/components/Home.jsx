@@ -9,7 +9,7 @@ const Home = () => {
         <div className="relative w-full h-screen">
 
             <img
-                src="/assets/bg-small.png"
+                src="/assets/bg-new.png"
                 alt="Campus Lost and Found"
                 className="w-full h-full object-cover"
             />
