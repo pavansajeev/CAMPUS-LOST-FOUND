@@ -15,18 +15,18 @@ const Home = () => {
             />
 
             {/* Buttons */}
-            <div className="absolute left-24 top-[65%] flex gap-6">
+            <div className="absolute right-10 top-[65%] flex gap-6 p-15">
 
                 <button
                     onClick={() => navigate("/found")}
-                    className="bg-orange-500 hover:bg-orange-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition"
+                    className="bg-[#b8b099] hover:bg-[#927f48] text-[#0a1931] font-semibold px-8 py-4 rounded-xl shadow-lg transition"
                 >
                     Lost Anything? Search here
                 </button>
 
                 <button
                     onClick={() => navigate("/lost")}
-                    className="bg-teal-600 hover:bg-teal-900 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition"
+                    className="bg-[#0a1931] hover:bg-[#6a93d5] text-[#b8b099] font-semibold px-8 py-4 rounded-xl shadow-lg transition"
                 >
                     Found Anything? Search here
                 </button>
