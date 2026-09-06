@@ -21,14 +21,14 @@ const Home = () => {
                     onClick={() => navigate("/found")}
                     className="bg-[#b8b099] hover:bg-[#927f48] text-[#0a1931] font-semibold px-8 py-4 rounded-xl shadow-lg transition"
                 >
-                    Lost Anything? Search here
+                    🔍I lost something
                 </button>
 
                 <button
                     onClick={() => navigate("/lost")}
                     className="bg-[#0a1931] hover:bg-[#6a93d5] text-[#b8b099] font-semibold px-8 py-4 rounded-xl shadow-lg transition"
                 >
-                    Found Anything? Search here
+                    I found something👀
                 </button>
 
             </div>
