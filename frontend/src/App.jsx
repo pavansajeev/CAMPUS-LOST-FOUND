@@ -28,7 +28,7 @@ import {
 import { CircleUserRound, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios"
-import bgimg from "./assets/bg.jpeg"
+import bgimg from "/src/assets/bg1.png"
 import logo from "./assets/logo.png";
 
 
