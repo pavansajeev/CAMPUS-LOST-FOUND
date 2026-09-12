@@ -7,7 +7,7 @@ export const Product = ({id,title,description,location,date,image,isAdmin,onDele
   const navigate=useNavigate()
 
   return (
-    <div className='bg-amber-50 shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition ml-5 mb-8'>
+    <div className='bg-[#E0F2FE] shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition ml-5 mb-8'>
       <div className='flex items-center justify-center'>
         <img src={`http://localhost:3000${image}`} alt={title} className='=max-w-full max-h-full object-contain'/>
         </div>
@@ -28,7 +28,7 @@ export const Product = ({id,title,description,location,date,image,isAdmin,onDele
                 {user?(
               String(user._id) !== String(userid) && (
               <button
-                className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-5"
+                className="w-full bg-[#0F172A] text-white py-2 rounded-lg hover:bg-[#243181] mt-5"
                 onClick={() => navigate(`/report-found/${id}`)}
               >
                 Report Found

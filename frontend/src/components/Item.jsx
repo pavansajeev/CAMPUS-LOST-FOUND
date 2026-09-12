@@ -5,7 +5,7 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
   const navigate=useNavigate()
   const user=JSON.parse(localStorage.getItem("user"));
   return (
-    <div className='bg-amber-50 shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition text-center ml-5'>
+    <div className='bg-[#E0F2FE] shadow-md rounded-lg overflow-hidden border hover:shadow-xl transition text-center ml-5'>
         <div className='p-4'>
             <h2 className='text-lg font-bold text-gray-800'>{title}</h2>
             
@@ -35,7 +35,7 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
     String(user._id) !== String(userid) && (
     <button
         onClick={() => navigate(`/claim/${id}`)}
-        className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+        className="mt-4 w-full bg-[#0F172A]  text-white py-2 rounded-lg hover:bg-[#243181]"
     >
         Request Claim
     </button>
@@ -44,7 +44,7 @@ export const Item = ({id,title,description,location,verifyquestion,isAdmin,date,
 
     <button
         onClick={() => navigate('/login')}
-        className="mt-4 w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600"
+        className="mt-4 w-full bg-[#0F172A]  text-white py-2 rounded-lg hover:bg-[#243181]"
     >
         Login to Request Claim
     </button>
